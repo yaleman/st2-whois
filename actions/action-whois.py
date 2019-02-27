@@ -1,6 +1,7 @@
 #!/usr/bin/env pythonx
 
 import re
+from datetime import datetime
 
 from st2common.content import utils
 from st2common.runners.base_action import Action
@@ -32,7 +33,9 @@ class Whois(Action):
             w = whois(parsed_uri.netloc)
         result = {}
         for key in w.keys():
-            if type(w[key]) == str:
+            if type(w[key]) == datetime:
+                result[key] = str(w[key])
+            elif type(w[key]) in (str, list ):
                 result[str(key)] = w[key]
             else:
                 self.logger.debug("key {} is type {}, skipping".format(key, type(w[key])))
