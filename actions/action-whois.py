@@ -34,6 +34,5 @@ class Whois(Action):
         for key in w.keys():
             if w[key]:
                 result[key] = w[key]
-        result = {}
         result['text'] = "I'm a little teapot" # w.text
         return (True, result)
