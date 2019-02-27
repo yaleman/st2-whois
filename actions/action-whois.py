@@ -31,8 +31,8 @@ class Whois(Action):
             self.logger.debug("whois on domain '{}'".format(parsed_uri.netloc))
             w = whois(parsed_uri.netloc)
         result = {}
-        #for key in w.keys():
-        #    if w[key]:
-        #        result[key] = w[key]
+        for key in w.keys():
+            if w[key]:
+                result[str(key)] = w[key]
         result['textval'] = "I'm a little teapot" # w.text
         return (True, result)
