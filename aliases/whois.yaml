@@ -1,0 +1,11 @@
+---
+name: "whois_chatops"
+action_ref: "whois.whois"
+description: "Execute a whois query."
+formats:
+  - "whois {{query}}"
+ack:
+  format: "ok"
+  append_url: true
+result:
+  format: "action completed! {~} {{ execution.result }}"

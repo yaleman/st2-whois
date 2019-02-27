@@ -1,0 +1,9 @@
+---
+ref: whois
+name: whois
+description: Whois queries for stackstorm
+keywords:
+  - whois
+version: 0.0.1
+author: James Hodgkinson
+email: james@terminaloutcomes.com

@@ -1,0 +1,14 @@
+---
+name: "whois"
+runner_type: "local-shell-cmd"
+enabled: true
+description: "runs the whois command"
+entry_point: ""
+parameters:
+  query:
+    type: 'string'
+    description: 'The host/thing you want to search for'
+    required: true
+  cmd:
+    immutable: true
+    default: 'whois "{{query}}"'
