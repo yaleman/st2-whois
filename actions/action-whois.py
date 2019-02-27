@@ -27,5 +27,9 @@ class Whois(Action):
         else:
             print("whois on domain '{}'".format(parsed_uri.netloc))
             w = whois(parsed_uri.netloc)
-
-        return w
+        result = {}
+        for key in w.keys():
+            if w[key]:
+                result[key] = w[key]
+        result['text'] = w.text
+        return result
