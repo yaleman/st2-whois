@@ -4,12 +4,17 @@
 from st2common.content import utils
 from st2common.runners.base_action import Action
 
+from whois import whois
 
+from urllib.parse import urlparse
 class Whois(Action):
     def run(self, query, cmd, *args):
-        #result = {
-        #    'pack_group': utils.get_pack_group(),
-        #    'pack_path': utils.get_system_packs_base_path()
-        #}
 
-        return "This should be a result, whois for {}".format(query)
+        query = query.replace("[", "")
+        query = query.replace("]", "")
+
+        parsed_uri = urlparse(query)
+
+        w = whois(parsed_uri.netloc)
+
+        return w.text
