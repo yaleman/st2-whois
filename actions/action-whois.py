@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+#!/usr/bin/env pythonx
 
 import re
 
@@ -9,7 +8,7 @@ from st2common.runners.base_action import Action
 from whois import whois
 
 
-from urllib.parse import urlparse
+from urlparse import urlparse
 
 class Whois(Action):
     def run(self, query, cmd, *args):
