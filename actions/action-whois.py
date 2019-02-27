@@ -23,7 +23,7 @@ class Whois(Action):
             w = whois(query)
         elif parsed_uri.netloc == '' and parsed_uri.path != '':
             print("whois on domain '{}'".format(parsed_uri.path))    
-            w = whois(parse_uri.path)
+            w = whois(parsed_uri.path)
         else:
             print("whois on domain '{}'".format(parsed_uri.netloc))
             w = whois(parsed_uri.netloc)
