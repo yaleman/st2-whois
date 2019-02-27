@@ -6,6 +6,4 @@ formats:
   - "whois {{query}}"
 ack:
   format: "ok"
-  append_url: true
-result:
-  format: "action completed! {~} {{ execution.result.text }}"
+  append_url: false
