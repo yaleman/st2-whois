@@ -11,4 +11,4 @@ parameters:
     required: true
   cmd:
     immutable: true
-    default: 'whois "{{query}}"'
+    default: 'whois $(echo -n "{{query}}" |  sed -e "s/^[a-z]*\:\/\///" | tr -d "[]")'
