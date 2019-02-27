@@ -34,10 +34,12 @@ class Whois(Action):
         result = {}
         for key in w.keys():
             if type(w[key]) == datetime:
+                # datetime is bad, m'kay
                 result[key] = str(w[key])
-            elif type(w[key]) in (str, list ):
-                result[str(key)] = w[key]
+            elif type(w[key]) == type(u'test'):
+                # something can't handle the unicode conversion...
+                result[key] = str(w[key])
             else:
-                self.logger.debug("key {} is type {}, skipping".format(key, type(w[key])))
+                result[key] = w[key]
         result['textval'] = w.text
         return (True, result)
