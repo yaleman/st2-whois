@@ -22,7 +22,7 @@ class Whois(Action):
             print("whois on {}".format(query))
             w = whois(query)
         else:
-            print('whois on {}'.format(parsed.uri.netloc))
+            print('whois on {}'.format(parsed_uri.netloc))
             w = whois(parsed_uri.netloc)
 
         return w
