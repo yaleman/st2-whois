@@ -8,4 +8,9 @@ ack:
   format: "ok, looking up {{ execution.parameters.query }}"
   append_url: false
 result:
-  format: "{{ execution.result.textval }}"
+  format: |
+    {% if execution.result.result.textval %}
+      {{ execution.result.textval }}
+    {% else %}
+    I am shit and couldn't do anything useful, here's the full dump. {~} {{ execution.result.result }}
+    {% endif %}
