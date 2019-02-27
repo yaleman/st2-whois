@@ -32,7 +32,7 @@ class Whois(Action):
             w = whois(parsed_uri.netloc)
         result = {}
         for key in w.keys():
-            if w[key]:
+            if type(w[key]) == str:
                 result[str(key)] = w[key]
         result['textval'] = "I'm a little teapot" # w.text
         return (True, result)
