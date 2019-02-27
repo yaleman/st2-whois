@@ -5,7 +5,7 @@ description: "Execute a whois query."
 formats:
   - "whois {{query}}"
 ack:
-  format: "ok, looking up {{query}}"
+  format: "ok, looking up {{ execution.parameters.query }}"
   append_url: false
 result:
-  format: "{{ execution.result.result.textval }}"
+  format: "{{ execution.result.textval }}"
