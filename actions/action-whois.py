@@ -19,10 +19,12 @@ class Whois(Action):
         parsed_uri = urlparse(query)
         # if it's an IP address
         if parsed_uri.netloc == '' and re.match('^\d{,3}\.\d{,3}\.\d{,3}\.\d{,3}$', query):
-            print("whois on ip {}".format(query))
+            print("whois on ip '{}'".format(query))
             w = whois(query)
+        elif parsed_uri.netloc == '' and parsed_uri.path != '':
+            print("whois on domain '{}'".format(parsed_uri.path))    
         else:
-            print('whois on domain {}'.format(parsed_uri.netloc))
+            print("whois on domain '{}'".format(parsed_uri.netloc))
             w = whois(parsed_uri.netloc)
 
         return w
