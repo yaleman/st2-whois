@@ -10,7 +10,7 @@ ack:
 result:
   format: |
     {% if execution.result.result.textval %}
-      {{ execution.result.textval }}
+      {{ execution.result.result.textval }}
     {% else %}
-    I am shit and couldn't do anything useful, here's the full dump. {~} {{ execution.result.result }}
+    I am terrible and couldn't do anything useful, here's the full dump. {~} {{ execution.result.result }}
     {% endif %}
