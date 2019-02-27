@@ -8,4 +8,4 @@ ack:
   format: "ok, looking up {{query}}"
   append_url: false
 result:
-  format: "{{ execution.result.result.text }}"
+  format: "{{ execution.result.result.textval }}"
