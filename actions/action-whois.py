@@ -35,4 +35,4 @@ class Whois(Action):
             if w[key]:
                 result[key] = w[key]
         result[u'text'] = w.text
-        return result
+        return (True, result)
