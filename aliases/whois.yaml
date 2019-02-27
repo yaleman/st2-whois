@@ -8,4 +8,4 @@ ack:
   format: "ok"
   append_url: false
 result:
-  format: "action completed! {~} {{ execution.result.result['registrar'] }}"
+  format: "action completed! '{{ execution.result.result }}''"
