@@ -6,7 +6,7 @@ from datetime import datetime
 from st2common.content import utils
 from st2common.runners.base_action import Action
 
-from whois import whois
+import whois
 
 
 from urlparse import urlparse
@@ -22,16 +22,22 @@ class Whois(Action):
 
         parsed_uri = urlparse(query)
         # if it's an IP address
-        if parsed_uri.netloc == '' and re.match('^\d{,3}\.\d{,3}\.\d{,3}\.\d{,3}$', query):
-            self.logger.debug("whois on ip '{}'".format(query))
-            w = whois(query)
-        elif parsed_uri.netloc == '' and parsed_uri.path != '':
-            self.logger.debug("whois on domain '{}'".format(parsed_uri.path))    
-            w = whois(parsed_uri.path)
-        else:
-            self.logger.debug("whois on domain '{}'".format(parsed_uri.netloc))
-            w = whois(parsed_uri.netloc)
-        
+        try:
+            if parsed_uri.netloc == '' and re.match('^\d{,3}\.\d{,3}\.\d{,3}\.\d{,3}$', query):
+                self.logger.debug("whois on ip '{}'".format(query))
+                w = whois.whois(query)
+            elif parsed_uri.netloc == '' and parsed_uri.path != '':
+                self.logger.debug("whois on domain '{}'".format(parsed_uri.path))    
+                w = whois.whois(parsed_uri.path)
+            else:
+                self.logger.debug("whois on domain '{}'".format(parsed_uri.netloc))
+                w = whois.whois(parsed_uri.netloc)
+        except whois.parser.PywhoisError as e:
+            return (False, {'error' : e})
+
+        if w.get('status', False) == False:
+            return (False, {'error' : "No result returned"})
+
         result = {}
         # go through the results and put it in a form that stackstorm can take
         for key in w.keys():
