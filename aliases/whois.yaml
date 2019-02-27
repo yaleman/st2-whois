@@ -7,3 +7,5 @@ formats:
 ack:
   format: "ok"
   append_url: false
+result:
+  format: "action completed! {~} {{ execution.result.result.text }}"
