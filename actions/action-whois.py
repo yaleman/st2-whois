@@ -34,5 +34,7 @@ class Whois(Action):
         for key in w.keys():
             if type(w[key]) == str:
                 result[str(key)] = w[key]
-        result['textval'] = "I'm a little teapot" # w.text
+            else:
+                self.logger.debug("key {} is type {}, skipping".format(key, type(w[key])))
+        result['textval'] = w.text
         return (True, result)
