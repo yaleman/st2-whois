@@ -5,12 +5,13 @@ description: "Execute a whois query."
 formats:
   - "whois {{query}}"
 ack:
-  format: "ok, looking up {{ execution.parameters.query }}"
+  format: "ok, looking up '{{ execution.parameters.query }}'"
   append_url: false
 result:
   format: |
-    {% if execution.result.result.textval %}
-      {{ execution.result.result.textval }}
+    {% if execution.result.result.text %}
+    Here is what I found:
+      {{ execution.result.result.text }}
     {% else %}
-    I am terrible and couldn't do anything useful, here's the full dump. {~} {{ execution.result.result }}
+    I am terrible and couldn't parse the result, here's the full dump. {~} {{ execution.result.result }}
     {% endif %}

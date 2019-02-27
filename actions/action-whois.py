@@ -32,14 +32,14 @@ class Whois(Action):
             self.logger.debug("whois on domain '{}'".format(parsed_uri.netloc))
             w = whois(parsed_uri.netloc)
         result = {}
+        # go through the results and put it in a form that stackstorm can take
         for key in w.keys():
-            if type(w[key]) == datetime:
-                # datetime is bad, m'kay
+            if isinstance(w[key], datetime): # datetime is bad, m'kay
                 result[key] = str(w[key])
-            elif type(w[key]) == type(u'test'):
-                # something can't handle the unicode conversion...
+            elif isinstance(w[key], unicode): # something can't handle the unicode conversion...
                 result[key] = str(w[key])
+            # everything else I got was OK... 
             else:
                 result[key] = w[key]
-        result['textval'] = w.text
+        result['text'] = w.text
         return (True, result)
