@@ -6,7 +6,7 @@ from st2common.runners.base_action import Action
 
 
 class Whois(Action):
-    def run(self, query, *args):
+    def run(self, query, cmd, *args):
         #result = {
         #    'pack_group': utils.get_pack_group(),
         #    'pack_path': utils.get_system_packs_base_path()
