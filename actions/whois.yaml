@@ -1,9 +1,9 @@
 ---
 name: "whois"
-runner_type: "local-shell-cmd"
+runner_type: "python-script"
 enabled: true
 description: "runs the whois command"
-entry_point: ""
+entry_point: "whois.py"
 parameters:
   query:
     type: 'string'
@@ -12,3 +12,5 @@ parameters:
   cmd:
     immutable: true
     default: 'whois $(echo -n "{{query}}" |  sed -e "s/^[a-z]*\:\/\///" | tr -d "[]")'
+
+    
