@@ -13,6 +13,9 @@ from urlparse import urlparse
 class Whois(Action):
     def run(self, query, cmd, *args):
 
+        # rip out newlines and gibberish
+        query = query.strip()
+        # replace the misp-style de-fanging
         query = query.replace("[", "")
         query = query.replace("]", "")
 
