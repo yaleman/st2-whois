@@ -3,7 +3,7 @@ name: "whois"
 runner_type: "python-script"
 enabled: true
 description: "runs the whois command"
-entry_point: "whois.py"
+entry_point: "action-whois.py"
 parameters:
   query:
     type: 'string'
