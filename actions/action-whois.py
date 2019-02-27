@@ -1,12 +1,15 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 
 import re
-from urllib.parse import urlparse
 
 from st2common.content import utils
 from st2common.runners.base_action import Action
 
 from whois import whois
+
+
+from urllib.parse import urlparse
 
 class Whois(Action):
     def run(self, query, cmd, *args):
