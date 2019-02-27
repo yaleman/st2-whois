@@ -11,7 +11,7 @@ result:
   format: |
     {% if execution.result.result.text %}
     Here is what I found:
-      {{ execution.result.result.text }}
+    {~}  {{ execution.result.result.text }}
     {% else %}
     I am terrible and couldn't parse the result, here's the full dump. {~} {{ execution.result.result }}
     {% endif %}
