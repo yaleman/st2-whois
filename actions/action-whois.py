@@ -22,17 +22,17 @@ class Whois(Action):
         parsed_uri = urlparse(query)
         # if it's an IP address
         if parsed_uri.netloc == '' and re.match('^\d{,3}\.\d{,3}\.\d{,3}\.\d{,3}$', query):
-            print("whois on ip '{}'".format(query))
+            self.logger.debug("whois on ip '{}'".format(query))
             w = whois(query)
         elif parsed_uri.netloc == '' and parsed_uri.path != '':
-            print("whois on domain '{}'".format(parsed_uri.path))    
+            self.logger.debug("whois on domain '{}'".format(parsed_uri.path))    
             w = whois(parsed_uri.path)
         else:
-            print("whois on domain '{}'".format(parsed_uri.netloc))
+            self.logger.debug("whois on domain '{}'".format(parsed_uri.netloc))
             w = whois(parsed_uri.netloc)
         result = {}
         for key in w.keys():
             if w[key]:
                 result[key] = w[key]
-        result['text'] = w.text
+        result[u'text'] = w.text
         return result
