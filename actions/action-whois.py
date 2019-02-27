@@ -17,4 +17,4 @@ class Whois(Action):
 
         w = whois(parsed_uri.netloc)
 
-        return w.text
+        return w
