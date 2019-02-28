@@ -3,13 +3,15 @@
 import re
 from datetime import datetime
 
-from st2common.content import utils
-from st2common.runners.base_action import Action
+if __name__ != '__main__':
+    from st2common.content import utils
+    from st2common.runners.base_action import Action
 
 import whois
 
-
 from urlparse import urlparse
+
+from whois_lib import *
 
 class Whois(Action):
     def run(self, query, cmd, *args):
@@ -38,19 +40,6 @@ class Whois(Action):
         if w.get('status', False) == False:
             return (False, {'error' : "No result returned"})
 
-        result = {}
-        # go through the results and put it in a form that stackstorm can take
-        for key in w.keys():
-            if isinstance(w[key], datetime): # datetime is bad, m'kay
-                result[key] = str(w[key])
-            # because sometimes, people make lists of problematic elements!
-            elif isinstance(w[key], list):
-                if len([element for element in w[key] if isinstance(element, datetime) or isinstance(element, unicode)]) > 0:
-                    result[key] = [str(element) for element in w[key]]
-            elif isinstance(w[key], unicode): # something can't handle the unicode conversion...
-                result[key] = str(w[key])
-            # everything else I got was OK... 
-            else:
-                result[key] = w[key]
+        result = clean_dict(w)
         result['text'] = w.text
         return (True, result)
