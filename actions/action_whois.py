@@ -11,7 +11,7 @@ import whois
 
 from urlparse import urlparse
 
-from whois_lib import clean_list
+from whois_lib import *
 
 class Whois(Action):
     def run(self, query, cmd, *args):
@@ -40,6 +40,6 @@ class Whois(Action):
         if w.get('status', False) == False:
             return (False, {'error' : "No result returned"})
 
-        result = clean_list(w)
+        result = clean_dict(w)
         result['text'] = w.text
         return (True, result)
