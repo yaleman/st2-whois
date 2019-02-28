@@ -31,9 +31,9 @@ def clean_dict(data):
         elif isinstance(data[key], dict):
             result[key] = clean_dict(data[key])
         # handle unicode, because python2
-        elif isinstance(w[key], unicode):
-            result[key] = str(w[key])
+        elif isinstance(data[key], unicode):
+            result[key] = str(data[key])
         # everything else I got was OK... 
         else:
-            result[key] = w[key]
+            result[key] = data[key]
     return result
