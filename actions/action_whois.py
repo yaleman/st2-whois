@@ -9,7 +9,7 @@ from st2common.runners.base_action import Action
 import whois
 
 
-from urlparse import 
+from urlparse import urlparse
 
 def clean_list(data):
     """ takes any dict, but typically the return value of an Action, and cleans up any data that'll make
