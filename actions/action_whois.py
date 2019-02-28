@@ -41,5 +41,5 @@ class Whois(Action):
             return (False, {'error' : "No result returned"})
 
         result = clean_dict(w)
-        result['text'] = w.text
+        result['text'] = w.text.replace(">>> ", "--- ").replace(" <<<", " ---")
         return (True, result)

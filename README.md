@@ -16,3 +16,4 @@ Tweet @TerminalOutcomes if you want to yell at me, or file a bug.
 ## Changelog
 
 * 2019-02-27 - v1.0.5 - Initial writeup of the code, thought I had it right but oh how wrong I was.
+* 2019-02-28 - v1.0.6 - Moved bad-data-cleaning code out of the Action into a separate function/lib, can handle arbitrary-layout data.
