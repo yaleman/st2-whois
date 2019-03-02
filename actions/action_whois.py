@@ -1,4 +1,4 @@
-#!/usr/bin/env pythonx
+#!/usr/bin/env python
 
 import re
 from datetime import datetime

@@ -23,7 +23,7 @@ def clean_dict(data):
     # go through the results and put it in a form that stackstorm can take
     for key in data.keys():
         if isinstance(data[key], datetime): # datetime is bad, m'kay
-            result[key] = str(data[key])
+            result[key] = data[key].isoformat()
         # because sometimes, people make lists of problematic elements!
         elif isinstance(data[key], list):
             result[key] = clean_list(data[key])
