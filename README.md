@@ -1,9 +1,11 @@
+# ⚠️ THIS IS ARCHIVED AND WILL NOT BE UPDATED ⚠️
+
 Whois pack for stackstorm
 ===
 
 This is a pretty simple implementation of whois for stackstorm. Works in `python2` for now - I will test in `python3` soon.
 
-Tweet @TerminalOutcomes if you want to yell at me, or file a bug.
+Tweet @yaleman43381258 if you want to yell at me, or file a bug.
 
 ## Actions
 
